@@ -1,6 +1,6 @@
 #Considerando um schema em banco de dados relacional com as seguintes tabelas:
 
-##Cadastro de Produtos
+#Cadastro de Produtos
 --------------------
 COD_PRODUTO  - Código do produto (PK)
 NOM_PRODUTO  - Nome do produto
