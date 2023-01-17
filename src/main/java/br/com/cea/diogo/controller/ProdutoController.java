@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.transaction.Transactional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +22,7 @@ import br.com.cea.diogo.service.ProdutoService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value="/produtos")
+@RequestMapping(value="/api/produtos")
 public class ProdutoController {
 
 	private final ProdutoService produtoService;
@@ -30,14 +32,16 @@ public class ProdutoController {
 		this.produtoService = produtoService;
 	}
 
+	@Transactional
 	@ApiOperation(value="Cadastrar um novo produto")
-	@PostMapping
+	@PostMapping(path = "/salvarProdutos")
 	public ResponseEntity<?> saveProduct(@RequestBody Produto produto) {
 		Map<String, Object> map = new LinkedHashMap<String, Object>();
-		produtoService.save(produto);
+		Produto produtoCreated = produtoService.save(produto);
 		map.put("status", HttpStatus.CREATED.value());
 		map.put("message", "O registro foi salvo com sucesso!");
 		map.put("dateTime", LocalDateTime.now());
+		map.put("data", produtoCreated);
 		return new ResponseEntity<>(map, HttpStatus.CREATED);
 	}
 	
