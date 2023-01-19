@@ -14,7 +14,7 @@ import br.com.cea.diogo.service.DepartamentoService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value="/api/departamentos")
+@RequestMapping(value="/api//v1/departamentos")
 public class DepartamentoController {
 	
 	public final DepartamentoService departamentoService;
