@@ -22,7 +22,7 @@ import br.com.cea.diogo.service.ProdutoService;
 import io.swagger.annotations.ApiOperation;
 
 @RestController
-@RequestMapping(value="/api//v1/produtos")
+@RequestMapping(value="/api/v1/produtos")
 public class ProdutoController {
 
 	private final ProdutoService produtoService;
